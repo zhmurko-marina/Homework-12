@@ -1,0 +1,63 @@
+@charset "UTF-8";
+h1 {
+  text-align: center;
+  font-weight: 300; }
+
+.information {
+  display: -ms-flexbox;
+  display: flex;
+  padding: 10px 50px; }
+  .information p {
+    padding-right: 30px; }
+
+ul {
+  padding: 30px 0 70px; }
+  ul li {
+    list-style: none;
+    position: relative;
+    padding-right: 10px;
+    background-color: #FAFAFA;
+    border: 1px solid #BDBDBD;
+    cursor: pointer;
+    transition: 0.2s; }
+    ul li .button-edit {
+      position: absolute;
+      right: 65px; }
+    ul li p {
+      margin: 0;
+      font-size: 20px;
+      padding: 10px 10px 10px 40px; }
+    ul li:hover {
+      background: #EEEEEE; }
+
+form input {
+  margin-left: 30px !important; }
+
+.edit {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: 0 auto;
+  z-index: 100;
+  background: rgba(0, 0, 0, 0.7); }
+  .edit div {
+    text-align: center;
+    margin: 50px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 20px; }
+
+.checked {
+  text-decoration: line-through;
+  position: relative; }
+  .checked::before {
+    content: "✓";
+    font-size: 25px;
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    left: 10px;
+    top: 4px;
+    color: #1B5E20; }

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html ng-app="todoList">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Todo App</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-sortable/0.16.1/sortable.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
+    <script src="js/core.js"></script>
+    <script src="js/controllers/main.js"></script>
+    <script src="js/services/todos.js"></script>
+    <script src="js/core.js"></script>
+</head>
+<body ng-controller="mainController">
+    <div class="container">
+        <div class="center">
+            <h1>My Todo List</h1>
+        </div>
+    
+        <div id="todo-form" class="row">
+            <div class="col m6 s8 offset-m3 offset-s2 text-center">
+                <form class="row">
+                    <div class="form-group inputContainer col s9">
+                        <input type="text" class="form-control input-lg text-center col s10 taskName" placeholder="New todo" ng-model="formData.text">
+                    </div>
+                    <button type="submit" class="col s2 waves-effect waves-light btn btn btn-primary btn-lg" ng-click="createTodo()">Add</button>
+                </form>
+            </div>
+        </div>
+        <div id="todo-list" class="row">
+            <div class="col s10 m8 offset-m2 offset-s1">
+                <ul class="taskList checkbox list-unstyled"  ui-sortable="sortableOptions">
+                       <li ng-repeat="todo in todos" class="row taskItem valign-wrapper z-depth-2 box">
+                           <p class="">{{ todo.text }}</p>
+                           <button class=" valign button-edit waves-effect waves-light btn" ng-click="changeTodo(todo._id)">edit</button>
+                           <button class=" valign col s1 waves-effect waves-light btn" ng-click="deleteTodo(todo._id)">✕</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <div class="edit row" ng-show="popup">
+            <div class="col l6 offset-l3 s10 offset-s1">
+                <div class="container">
+                    <input type="text" id="editInput" class="taskName" ng-model="editCurrentTask">
+                </div>
+                <div>
+                    <button class="waves-effect waves-light btn" ng-click="saveEdit()">save</button>
+                    <button class="waves-effect waves-light btn" ng-click="cancel()">cancel</button>
+                </div>
+            </div>
+        </div>
+
+</body>
+</html>
